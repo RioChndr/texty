@@ -1,0 +1,116 @@
+.paragraph{
+  margin: 1rem 0;
+  line-height: 1.5rem;
+}
+.placeholder {
+  color: #ccc;
+}
+
+.quote {
+  border-left: 2px solid #ccc;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+.heading-h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.heading-h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.heading-h3 {
+  font-size: 1.125em;
+  font-weight: bold;
+}
+.heading-h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.heading-h5 {
+  font-size: 0.875em;
+  font-weight: bold; 
+}
+.heading-h6 {
+  font-size: 0.75em;
+  font-weight: bold;
+}
+.nested-listitem {
+  margin-left: 20px;
+}
+.list-ol {
+  list-style-type: decimal;
+}
+.list-ul {
+  list-style-type: disc;
+}
+.listItem {
+  margin: 0;
+}
+.listItemChecked {
+  margin: 0;
+}
+.listItemUnchecked {
+  margin: 0;
+}
+.hashtag {
+  color: #0000ff;
+}
+.image {
+  max-width: 100%;
+}
+.link {
+  color: #0000ff;
+}
+.textBold {
+  font-weight: bold;
+}
+
+.textItalic {
+  font-style: italic;
+}
+.textStrikethrough {
+  text-decoration: line-through;
+}
+.textSubscript {
+  vertical-align: sub;
+}
+.textSuperscript {
+  vertical-align: super;
+}
+.textUnderline {
+  text-decoration: underline;
+}
+.textUnderlineStrikethrough {
+  text-decoration: underline line-through;
+}
+.code, .textCode{
+  background-color: rgb(240, 242, 245);
+  padding: 1px 0.25rem;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  font-size: 94%;
+}
+.tokenAttr {
+  color: #0000ff;
+}
+.tokenAttr {
+  color: #0000ff;
+}
+.tokenProperty {
+  color: #0000ff;
+}
+.tokenSelector {
+  color: #0000ff;
+}
+.tokenComment {
+  color: #008000;
+}
+.tokenFunction {
+  color: #0000ff;
+}
+.tokenOperator {
+  color: #0000ff;
+}
+.tokenVariable {
+  color: #0000ff;
+}

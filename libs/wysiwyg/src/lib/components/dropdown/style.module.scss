@@ -1,0 +1,23 @@
+.container{
+  position: relative;
+}
+.activator{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.options {
+  position: absolute;
+  top: 100%;
+  left:0;
+  width: 200px;
+  min-width: fit-content;
+  background-color: #fff;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow: auto;
+}

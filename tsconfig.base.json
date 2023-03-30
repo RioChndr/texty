@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@lexial-essential/wysiwyg": ["libs/wysiwyg/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,7 +1,7 @@
 {
-  "name": "kenichi",
+  "name": "preview",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/kenichi/src",
+  "sourceRoot": "apps/preview/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,16 +10,16 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/kenichi",
-        "index": "apps/kenichi/src/index.html",
+        "outputPath": "dist/apps/preview",
+        "index": "apps/preview/src/index.html",
         "baseHref": "/",
-        "main": "apps/kenichi/src/main.tsx",
-        "tsConfig": "apps/kenichi/tsconfig.app.json",
-        "assets": ["apps/kenichi/src/favicon.ico", "apps/kenichi/src/assets"],
-        "styles": ["apps/kenichi/src/styles.scss"],
+        "main": "apps/preview/src/main.tsx",
+        "tsConfig": "apps/preview/tsconfig.app.json",
+        "assets": ["apps/preview/src/favicon.ico", "apps/preview/src/assets"],
+        "styles": ["apps/preview/src/styles.scss"],
         "scripts": [],
         "isolatedConfig": true,
-        "webpackConfig": "apps/kenichi/webpack.config.js"
+        "webpackConfig": "apps/preview/webpack.config.js"
       },
       "configurations": {
         "development": {
@@ -31,8 +31,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/kenichi/src/environments/environment.ts",
-              "with": "apps/kenichi/src/environments/environment.prod.ts"
+              "replace": "apps/preview/src/environments/environment.ts",
+              "with": "apps/preview/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -48,15 +48,15 @@
       "executor": "@nrwl/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "kenichi:build",
+        "buildTarget": "preview:build",
         "hmr": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "kenichi:build:development"
+          "buildTarget": "preview:build:development"
         },
         "production": {
-          "buildTarget": "kenichi:build:production",
+          "buildTarget": "preview:build:production",
           "hmr": false
         }
       }
@@ -65,14 +65,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/kenichi/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/preview/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/kenichi/jest.config.ts",
+        "jestConfig": "apps/preview/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

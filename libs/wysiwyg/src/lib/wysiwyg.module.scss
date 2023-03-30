@@ -1,0 +1,10 @@
+.container {
+  position: relative;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  :focus {
+    outline: none;
+  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
