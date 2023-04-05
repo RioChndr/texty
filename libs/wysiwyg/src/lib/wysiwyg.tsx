@@ -15,14 +15,22 @@ import { theme } from './theme';
 import styles from './wysiwyg.module.scss';
 import { ImagePlugin } from './plugins/ImagePlugin/ImagePlugin';
 
+import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
+import { SerializedEditorState, SerializedLexicalNode } from 'lexical';
+import { DataPlugin } from './plugins/DataPlugin';
+
 function onError(error: any) {
   console.error(error);
 }
 
 export function EditorWysiwyg({
+  value,
+  onChange,
   children
 }: {
-  children: JSX.Element;
+  value?: any
+  onChange?: (value: SerializedEditorState) => void;
+  children: JSX.Element | JSX.Element[];
 }) {
   const initialConfig: InitialConfigType = {
     namespace: 'MyEditor',
@@ -47,8 +55,11 @@ export function EditorWysiwyg({
         <CheckListPlugin />
         <ListPlugin />
         <FloatingLinkEditorPlugin />
+        <DataPlugin onChange={onChange} value={value} />
 
-        {children}
+        <>
+          {children}
+        </>
       </LexicalComposer>
     </div>
   );
