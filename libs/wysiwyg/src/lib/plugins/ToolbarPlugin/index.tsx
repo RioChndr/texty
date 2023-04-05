@@ -1,70 +1,37 @@
-import { BsArrowClockwise, BsArrowCounterclockwise, BsCardImage, BsListOl, BsListUl, BsPencilFill, BsTextCenter, BsTextLeft, BsTextRight, BsType, BsTypeH1, BsTypeH2, BsTypeH3 } from 'react-icons/bs'
-import Styles from './index.module.scss'
+import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
 import {
-  BsTypeItalic,
-  BsTypeBold,
-  BsTypeUnderline,
-  BsTypeStrikethrough,
-  BsSubscript,
-  BsSuperscript,
-  BsCodeSlash,
-  BsLink45Deg
-} from 'react-icons/bs'
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import {
-  $getSelectionStyleValueForProperty,
-  $isParentElementRTL,
-  $patchStyleText,
-  $selectAll,
-  $setBlocksType,
-} from '@lexical/selection';
-import React, { useCallback, useEffect, useState } from 'react'
-import {
-  $getSelection,
-  $isRangeSelection,
-  COMMAND_PRIORITY_CRITICAL,
-  FORMAT_TEXT_COMMAND,
-  SELECTION_CHANGE_COMMAND,
-  $isTextNode,
-  LexicalEditor,
-  CAN_UNDO_COMMAND,
-  CAN_REDO_COMMAND,
-  UNDO_COMMAND,
-  REDO_COMMAND,
-  $isRootOrShadowRoot,
-  $createParagraphNode,
-  FORMAT_ELEMENT_COMMAND,
-  $isNodeSelection,
-  COMMAND_PRIORITY_LOW,
-  LexicalNode
-} from 'lexical'
-import {
-  $isListNode,
-  INSERT_CHECK_LIST_COMMAND,
-  INSERT_ORDERED_LIST_COMMAND,
+  $isListNode, INSERT_ORDERED_LIST_COMMAND,
   INSERT_UNORDERED_LIST_COMMAND,
   ListNode,
-  REMOVE_LIST_COMMAND,
+  REMOVE_LIST_COMMAND
 } from '@lexical/list';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {
-  $getNearestBlockElementAncestorOrThrow,
-  $getNearestNodeOfType,
-  mergeRegister,
-  $findMatchingParent,
+  $createHeadingNode, $isHeadingNode,
+  HeadingTagType
+} from '@lexical/rich-text';
+import {
+  $setBlocksType
+} from '@lexical/selection';
+import {
+  $findMatchingParent, $getNearestNodeOfType,
+  mergeRegister
 } from '@lexical/utils';
 import {
-  $createHeadingNode,
-  $createQuoteNode,
-  $isHeadingNode,
-  HeadingTagType,
-} from '@lexical/rich-text';
-import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
-import { getSelectedNode } from 'libs/wysiwyg/src/utils/getSelectedNode'
-import { Listbox } from '@headlessui/react'
+  $createParagraphNode, $getSelection,
+  $isRangeSelection, $isRootOrShadowRoot, CAN_REDO_COMMAND, CAN_UNDO_COMMAND, COMMAND_PRIORITY_CRITICAL, FORMAT_ELEMENT_COMMAND, FORMAT_TEXT_COMMAND, LexicalEditor, REDO_COMMAND, SELECTION_CHANGE_COMMAND, UNDO_COMMAND
+} from 'lexical';
+import { getSelectedNode } from 'libs/wysiwyg/src/utils/getSelectedNode';
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+  BsArrowClockwise, BsArrowCounterclockwise, BsCardImage, BsCodeSlash,
+  BsLink45Deg, BsListOl, BsListUl, BsSubscript,
+  BsSuperscript, BsTextCenter, BsTextLeft, BsTextRight, BsType, BsTypeBold, BsTypeH1, BsTypeH2, BsTypeH3, BsTypeItalic, BsTypeStrikethrough, BsTypeUnderline
+} from 'react-icons/bs';
+import Styles from './index.module.scss';
 
 import { Dropdown } from '../../components/dropdown';
-import { ImagePlugin, PICK_IMAGE_COMMAND, SELECT_IMAGE_COMMAND } from '../ImagePlugin/ImagePlugin';
-import { $isImageNode, ImageNode } from '../ImagePlugin/ImageNode';
+import { PICK_IMAGE_COMMAND } from '../ImagePlugin/ImagePlugin';
 
 const blockTypeToBlockName: Record<string, string> = {
   paragraph: 'Normal',
