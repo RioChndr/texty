@@ -28,10 +28,14 @@ import {
   BsLink45Deg, BsListOl, BsListUl, BsSubscript,
   BsSuperscript, BsTextCenter, BsTextLeft, BsTextRight, BsType, BsTypeBold, BsTypeH1, BsTypeH2, BsTypeH3, BsTypeItalic, BsTypeStrikethrough, BsTypeUnderline
 } from 'react-icons/bs';
+import {
+  FiColumns
+} from 'react-icons/fi';
 import Styles from './index.module.scss';
 
 import { Dropdown } from '../../components/dropdown';
 import { PICK_IMAGE_COMMAND } from '../ImagePlugin/ImagePlugin';
+import { INSERT_COLUMN_COMMAND } from '../ColumnPlugin';
 
 const blockTypeToBlockName: Record<string, string> = {
   paragraph: 'Normal',
@@ -236,6 +240,7 @@ export function ToolbarPlugin() {
       <ToolbarItem icon={<BsLink45Deg />} isActive={isLink} onClick={insertLink} />
       <AlignFormatDropdown editor={activeEditor} />
       <ToolbarItem icon={<BsCardImage />} onClick={pickImage}></ToolbarItem>
+      <ColumnDropdown editor={editor}></ColumnDropdown>
     </div>
   )
 }
@@ -391,5 +396,45 @@ function AlignFormatDropdown({
         <span style={{ marginLeft: '8px' }}>Align Right</span>
       </div>
     </Dropdown>
+  )
+}
+
+function ColumnDropdown({
+  editor
+}: {
+  editor: LexicalEditor;
+}) {
+  return (
+    <Dropdown
+      activator={(
+        <div className={Styles.itemTool}>
+          <FiColumns />
+        </div>
+      )}
+    >
+      <div
+        className={Styles.option}
+        onClick={() => {
+          editor.dispatchCommand(INSERT_COLUMN_COMMAND, {
+            totalColumns: 2,
+          })
+        }}
+      >
+        <FiColumns />
+        <span style={{ marginLeft: '8px' }}>2 Columns</span>
+      </div>
+      <div
+        className={Styles.option}
+        onClick={() => {
+          editor.dispatchCommand(INSERT_COLUMN_COMMAND, {
+            totalColumns: 3,
+          })
+        }}
+      >
+        <FiColumns />
+        <span style={{ marginLeft: '8px' }}>3 Columns</span>
+      </div>
+    </Dropdown>
+
   )
 }

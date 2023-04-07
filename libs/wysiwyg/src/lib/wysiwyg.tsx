@@ -18,6 +18,7 @@ import { ImagePlugin } from './plugins/ImagePlugin/ImagePlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { SerializedEditorState, SerializedLexicalNode } from 'lexical';
 import { DataPlugin } from './plugins/DataPlugin';
+import { ColumnPlugin } from './plugins/ColumnPlugin';
 
 function onError(error: any) {
   console.error(error);
@@ -36,7 +37,7 @@ export function EditorWysiwyg({
     namespace: 'MyEditor',
     theme: theme,
     onError,
-    nodes: [...InitialNodes]
+    nodes: [...InitialNodes],
   };
 
   return (
@@ -56,7 +57,7 @@ export function EditorWysiwyg({
         <ListPlugin />
         <FloatingLinkEditorPlugin />
         <DataPlugin onChange={onChange} value={value} />
-
+        <ColumnPlugin />
         <>
           {children}
         </>
