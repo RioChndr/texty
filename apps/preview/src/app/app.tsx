@@ -1,10 +1,13 @@
 import { EditorWysiwyg as Wysiwyg } from "@lexial-essential/wysiwyg";
 import { ImagePlugin } from "libs/wysiwyg/src/lib/plugins/ImagePlugin/ImagePlugin";
 import { useEffect } from "react";
+import { useLocalStorage } from "react-use";
 
 const imgBbbKey = process.env.NX_IMGBB_KEY
 
 export function App() {
+  const [editorState, setEditorState] = useLocalStorage('editorState', '')
+
   useEffect(() => {
     console.log(process.env)
     if (!imgBbbKey) {
@@ -14,7 +17,7 @@ export function App() {
 
   return (
     <>
-      <Wysiwyg>
+      <Wysiwyg value={editorState ? JSON.parse(editorState) : undefined} onChange={(val) => setEditorState(JSON.stringify(val))}>
         <ImagePlugin uploadImage={async (file) => {
           try {
             if (!imgBbbKey) {
@@ -39,8 +42,8 @@ export function App() {
             return null
           }
         }} />
-      </Wysiwyg>
 
+      </Wysiwyg>
       <div />
     </>
   );

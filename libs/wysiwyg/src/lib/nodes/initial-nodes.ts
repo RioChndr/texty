@@ -5,6 +5,8 @@ import { ListItemNode, ListNode } from '@lexical/list';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { ImageNode } from '../plugins/ImagePlugin/ImageNode';
+import { ContainerColumnNode } from '../plugins/ColumnPlugin/ContainerColumnNode';
+import { ColumnNode } from '../plugins/ColumnPlugin/ColumnNode';
 
 export const InitialNodes = [
   HeadingNode,
@@ -16,6 +18,7 @@ export const InitialNodes = [
   HorizontalRuleNode,
   CodeNode,
   CodeHighlightNode,
-
+  ContainerColumnNode,
+  ColumnNode,
   ImageNode,
 ]
